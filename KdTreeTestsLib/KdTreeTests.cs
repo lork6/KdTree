@@ -217,7 +217,20 @@ namespace KdTree.Tests
 			}
 		}
 
-		[TestMethod]
+        [TestMethod]
+        [TestCategory("KdTree")]
+        public void TestClear()
+        {
+            AddTestNodes();
+
+            testNodes.Clear();
+			tree.Clear();
+            Assert.AreEqual(0, testNodes.Count);
+            Assert.AreEqual(0, tree.Count);
+            
+        }
+
+        [TestMethod]
 		[TestCategory("KdTree")]
 		public void TestGetNearestNeighbours()
 		{

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -576,15 +577,18 @@ namespace KdTree
 
 		private void RemoveChildNodes(KdTreeNode<TKey, TValue> node)
 		{
-			for (var side = -1; side <= 1; side += 2)
+           
+            for (var side = -1; side <= 1; side += 2)
 			{
 				if (node[side] != null)
 				{
 					RemoveChildNodes(node[side]);
 					node[side] = null;
+					
 				}
 			}
-		}
+            Count--;
+        }
 
 		public void Clear()
 		{
